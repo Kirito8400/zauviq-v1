@@ -7,6 +7,9 @@ import {
   type DialogueFormValues,
   type DialogueValidationErrors,
 } from '../utils/portfolioLogic';
+import { SplitTextReveal } from './motion/SplitTextReveal';
+import { RevealPanel } from './motion/RevealPanel';
+import { LiquidButton } from './motion/LiquidButton';
 
 interface DialogueSectionProps {
   preselectedTopic?: string | null;
@@ -76,17 +79,18 @@ export function DialogueSection({ preselectedTopic }: DialogueSectionProps) {
           </p>
         </div>
         <div className="lg:col-span-8">
-          <h2
+          <SplitTextReveal
+            as="h2"
             id="dialogue-heading"
-            className="font-[var(--font-display)] text-[clamp(1.9rem,3.4vw,3rem)] font-medium leading-[1.12] tracking-[-0.03em] text-[#0B0D0E] max-w-[740px]"
-          >
-            Every possibility begins with an honest conversation about a real problem.
-          </h2>
+            staggerMs={28}
+            text="Every possibility begins with an honest conversation about a real problem."
+            className="font-[var(--font-display)] text-[clamp(1.95rem,3.4vw,3rem)] font-medium leading-[1.1] tracking-[-0.03em] text-[#0B0D0E] max-w-[740px]"
+          />
         </div>
       </div>
 
       {/* Main White Architectural Inquiry Panel */}
-      <div className="rounded-[28px] md:rounded-[36px] bg-white px-6 py-12 md:px-14 md:py-16">
+      <RevealPanel className="rounded-[28px] md:rounded-[36px] bg-white px-6 py-12 md:px-14 md:py-16">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-14">
           {/* Left Editorial Column */}
           <div className="lg:col-span-5 flex flex-col justify-between">
@@ -302,19 +306,20 @@ export function DialogueSection({ preselectedTopic }: DialogueSectionProps) {
                 </div>
 
                 <div className="pt-2">
-                  <button
+                  <LiquidButton
                     type="submit"
-                    className="inline-flex min-h-[48px] items-center gap-2.5 rounded-full bg-[#0B0D0E] px-7 py-3 text-[15px] font-medium text-white transition-colors duration-200 hover:bg-[#1D4ED8] cursor-pointer whitespace-nowrap"
+                    variant="dark"
+                    icon={<ArrowRight className="w-4 h-4 shrink-0" aria-hidden="true" />}
+                    className="min-h-[50px] px-7 py-3 text-[15px]"
                   >
-                    <span>Send Inquiry</span>
-                    <ArrowRight className="w-4 h-4 shrink-0" aria-hidden="true" />
-                  </button>
+                    Send Inquiry
+                  </LiquidButton>
                 </div>
               </form>
             )}
           </div>
         </div>
-      </div>
+      </RevealPanel>
     </section>
   );
 }

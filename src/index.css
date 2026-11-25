@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
   --color-canvas: #E5E9EB;
@@ -22,6 +22,8 @@
     background-color: var(--color-canvas);
     color: var(--color-ink);
     scroll-padding-top: 6rem;
+    letter-spacing: -0.012em;
+    font-feature-settings: "cv02", "cv03", "cv04", "ss01";
   }
 
   h1, h2, h3, h4 {
@@ -47,6 +49,39 @@
   }
 }
 
+/* Signature Eloqwnt-style rising liquid dome fill on pill buttons */
+.liquid-btn-fill {
+  transform: translate3d(0, 102%, 0) scale(0.92);
+  transition:
+    transform 580ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-radius 580ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.liquid-btn:hover .liquid-btn-fill,
+.liquid-btn:focus-visible .liquid-btn-fill {
+  transform: translate3d(0, 0%, 0) scale(1.08);
+  border-radius: 36%;
+}
+
+/* Fluid CSS Grid accordion for silky height transitions */
+.fluid-accordion {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fluid-accordion[data-open="true"] {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.fluid-accordion > div {
+  overflow: hidden;
+}
+
 @keyframes zauviq-marquee {
   0% {
     transform: translate3d(0, 0, 0);
@@ -59,7 +94,7 @@
 @keyframes zauviq-fade-up {
   0% {
     opacity: 0;
-    transform: translate3d(0, 12px, 0);
+    transform: translate3d(0, 18px, 0);
   }
   100% {
     opacity: 1;
@@ -70,16 +105,27 @@
 @keyframes zauviq-fade-in {
   0% {
     opacity: 0;
+    transform: translate3d(0, 8px, 0);
   }
   100% {
     opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes zauviq-float-cue {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, 5px, 0);
   }
 }
 
 .animate-zauviq-marquee {
   display: flex;
   width: max-content;
-  animation: zauviq-marquee 38s linear infinite;
+  animation: zauviq-marquee 34s linear infinite;
 }
 
 .animate-zauviq-marquee:hover {
@@ -87,11 +133,15 @@
 }
 
 .animate-zauviq-fade-up {
-  animation: zauviq-fade-up 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: zauviq-fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .animate-zauviq-fade-in {
-  animation: zauviq-fade-in 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: zauviq-fade-in 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-zauviq-float-cue {
+  animation: zauviq-float-cue 2.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -100,7 +150,12 @@
   }
   .animate-zauviq-marquee,
   .animate-zauviq-fade-up,
-  .animate-zauviq-fade-in {
+  .animate-zauviq-fade-in,
+  .animate-zauviq-float-cue {
     animation: none;
+  }
+  .liquid-btn-fill,
+  .fluid-accordion {
+    transition: none;
   }
 }

@@ -10,6 +10,7 @@ import { DialogueSection } from './components/DialogueSection';
 import { Footer } from './components/Footer';
 import { FieldStudyModal } from './components/FieldStudyModal';
 import { FieldFilmModal } from './components/FieldFilmModal';
+import { FluidCursor } from './components/motion/FluidCursor';
 import type { SolutionItem } from './data/zauviqData';
 
 export default function App() {
@@ -29,6 +30,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#E5E9EB] text-[#0B0D0E]">
+      <FluidCursor />
       <Navbar />
 
       <main>
