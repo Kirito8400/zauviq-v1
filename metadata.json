@@ -1,0 +1,6 @@
+{
+  "name": "Zauviq — Beyond Problems. Into Possibilities",
+  "description": "Zauviq researches real-world challenges and engages with people to transform human insights into practical software solutions that simplify management and improve everyday life.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

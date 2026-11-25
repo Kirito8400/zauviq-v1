@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-canvas: #E5E9EB;
+  --color-surface: #FFFFFF;
+  --color-surface-subtle: #F4F6F8;
+  --color-ink: #0B0D0E;
+  --color-ink-secondary: #4E5760;
+  --color-ink-muted: #6C7680;
+  --color-hairline: #DCE2E6;
+  --color-accent: #1D4ED8;
+  --color-accent-hover: #1E40AF;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    scroll-padding-top: 6rem;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  button,
+  a,
+  input,
+  textarea,
+  select {
+    outline: none;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
+
+@keyframes zauviq-marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes zauviq-fade-up {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes zauviq-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-zauviq-marquee {
+  display: flex;
+  width: max-content;
+  animation: zauviq-marquee 38s linear infinite;
+}
+
+.animate-zauviq-marquee:hover {
+  animation-play-state: paused;
+}
+
+.animate-zauviq-fade-up {
+  animation: zauviq-fade-up 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-zauviq-fade-in {
+  animation: zauviq-fade-in 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-zauviq-marquee,
+  .animate-zauviq-fade-up,
+  .animate-zauviq-fade-in {
+    animation: none;
+  }
+}
